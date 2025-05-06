@@ -2,14 +2,16 @@ const Hero = () => {
   return (
     <section id="hero">
       <div className="container hero-container">
-        <div className="hero-image animate-slide-in-right">
-          <div className="image-wrapper">
-            <img
-              src="/images/hero_image.jpg"
-              alt="Professional virtual assistant"
-            />
-          </div>
+        <div className="circle-frame animate-slide-in-right">
+          <img
+            src="/images/hero_image.jpg"
+            alt="Professional virtual assistant"
+            className="profile-image"
+          />
         </div>
+      </div>
+      <div className="hero-slogan">
+        <p>Alles ist gut solange du wild bist</p>
       </div>
     </section>
   );
