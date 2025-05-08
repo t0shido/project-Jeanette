@@ -109,13 +109,13 @@ header {
   z-index: 50;
   padding: 1rem 0;
   transition: all 0.3s ease-in-out;
-  background-color: transparent;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 header.scrolled {
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 0.75rem 0;
 }
 
@@ -131,6 +131,22 @@ header.scrolled {
   font-weight: 600;
   color: var(--neutral-900);
   z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.1;
+}
+
+.logo-main {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.logo-slogan {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--neutral-600);
+  margin-top: 0.1rem;
 }
 
 .logo span {
@@ -255,6 +271,18 @@ header.scrolled {
   border-bottom: 1px solid var(--neutral-100);
 }
 
+.mobile-menu-header .logo {
+  font-size: 1.5rem;
+}
+
+.mobile-menu-header .logo-main {
+  font-size: 1.5rem;
+}
+
+.mobile-menu-header .logo-slogan {
+  font-size: 0.8rem;
+}
+
 .mobile-menu-close {
   background: transparent;
   border: none;
@@ -367,14 +395,40 @@ section {
 /* Hero Section */
 #hero {
   padding-top: 5rem;
-  background: url('/images/hero_background.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh; /* Maintains full viewport height */
+  position: relative;
+  height: 100vh; /* Force exact viewport height */
   display: flex;
   align-items: center;
-  position: relative;
   overflow: hidden;
+  background-color: #f5f5f5; /* Fallback color */
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+/* Hero background and overlay */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Background gradient overlay */
+.hero-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.7) 100%);
+  z-index: 1; /* Above the background but below the content */
+  pointer-events: none; /* Allows clicking through the overlay */
 }
 
 /* Hero slogan */
@@ -382,7 +436,7 @@ section {
   position: absolute;
   bottom: 4rem; /* Positioned relative to the bottom of the hero section */
   right: 10%;
-  z-index: 2;
+  z-index: 3; /* Above the background, gradient, and container */
   transform: skewY(-5deg); /* Angle that matches the slope */
   transform-origin: right;
   background: transparent; /* Ensure no background */
@@ -403,17 +457,15 @@ section {
   border: none; /* Remove any borders from text */
 }
 
-/* Sloped effect at the bottom of hero section */
-#hero::after {
-  content: '';
+/* Straight line at the bottom of hero section */
+.hero-bottom-line {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 10vw; /* Height of the slope, responsive to viewport width */
+  height: 5px; /* Height of the horizontal line */
   background: white;
-  clip-path: polygon(0 100%, 100% 0, 100% 100%);
-  z-index: 1;
+  z-index: 4; /* Above all other hero elements */
 }
 
 .hero-container {
@@ -421,8 +473,8 @@ section {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%;
-  justify-content: center;
+  position: relative;
+  z-index: 2; /* Above the background and gradient */
   padding: 2rem 0;
 }
 
@@ -543,11 +595,34 @@ section {
   border-top: none; /* Remove any top border */
 }
 
+.section-title.text-center {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 .about-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .about-container {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  
+  .about-content-wrapper {
+    flex: 1;
+    margin-right: 2rem;
+  }
+  
+  .about-image-container {
+    flex: 0 0 350px;
+    margin-top: 0;
+  }
 }
 
 .about-image-container {
@@ -558,14 +633,7 @@ section {
 }
 
 .about-image-frame {
-  position: absolute;
-  top: -0.75rem;
-  left: -0.75rem;
-  width: 4rem;
-  height: 4rem;
-  border: 2px solid var(--primary-200);
-  border-radius: 0.5rem;
-  z-index: 1;
+  display: none; /* Hide the blue square */
 }
 
 .about-image {
@@ -598,6 +666,69 @@ section {
   margin-bottom: 1rem;
   line-height: 1.6;
   font-size: 0.95rem;
+}
+
+/* Neue Styles für den About-Bereich */
+.about-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.about-section {
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-subtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--primary-100);
+  padding-bottom: 0.5rem;
+}
+
+.about-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--gray-dark);
+  line-height: 1.5;
+}
+
+.about-list li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* Media Queries für größere Bildschirme */
+@media (min-width: 768px) {
+  .about-sections {
+    grid-template-columns: 1fr; /* Immer eine Spalte, auch auf größeren Bildschirmen */
+  }
+  
+  .about-section {
+    max-width: 100%;
+  }
 }
 
 .skills-grid {

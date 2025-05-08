@@ -1,6 +1,14 @@
 const Hero = () => {
   return (
-    <section id="hero">
+    <section 
+      id="hero" 
+      style={{ 
+        backgroundImage: "url('/images/hero_background.jpg')",
+        height: '100vh',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
+    >
       <div className="container hero-container">
         <div className="circle-frame animate-slide-in-right">
           <img
@@ -10,9 +18,8 @@ const Hero = () => {
           />
         </div>
       </div>
-      <div className="hero-slogan">
-        <p>Alles ist gut solange du wild bist</p>
-      </div>
+
+      <div className="hero-bottom-line"></div>
     </section>
   );
 };

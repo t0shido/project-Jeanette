@@ -104,7 +104,8 @@ const Header = () => {
       <div className="container header-container">
         {/* Logo */}
         <a href="#" className="logo">
-          Jeanettes Büro<span>.</span>
+          <div className="logo-main">Jeanettes Office<span>.</span></div>
+          <div className="logo-slogan">Deine virtuelle Assistenz</div>
         </a>
 
         {/* Regular Navigation */}
@@ -138,7 +139,8 @@ const Header = () => {
         <nav ref={mobileMenuRef} className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-header">
             <a href="#" className="logo">
-              Jeanettes Büro<span>.</span>
+              <div className="logo-main">Jeanettes Office<span>.</span></div>
+              <div className="logo-slogan">Deine virtuelle Assistenz</div>
             </a>
             <button 
               className="mobile-menu-close" 
