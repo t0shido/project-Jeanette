@@ -50,7 +50,7 @@ function App() {
         <button
           onClick={scrollToTop}
           className="scroll-top-button"
-          aria-label="Scroll to top"
+          aria-label="Nach oben scrollen"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />

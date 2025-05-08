@@ -5,7 +5,7 @@ const Hero = () => {
         <div className="circle-frame animate-slide-in-right">
           <img
             src="/images/hero_image.jpg"
-            alt="Professional virtual assistant"
+            alt="Professionelle virtuelle Assistentin"
             className="profile-image"
           />
         </div>

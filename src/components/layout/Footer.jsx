@@ -9,7 +9,7 @@ const Footer = () => {
             Jeanette<span>.</span>
           </a>
           <p className="footer-description">
-            Professional virtual assistant services to help you focus on what matters most.
+            Professionelle virtuelle Assistenzdienstleistungen, damit Sie sich auf das konzentrieren können, was am wichtigsten ist.
           </p>
         </div>
         
@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="footer-divider"></div>
         
         <div className="footer-copyright">
-          <p>© {currentYear} Jeanette Virtual Assistant. All rights reserved.</p>
+          <p>© {currentYear} Jeanette Virtuelle Assistentin. Alle Rechte vorbehalten.</p>
         </div>
       </div>
     </footer>

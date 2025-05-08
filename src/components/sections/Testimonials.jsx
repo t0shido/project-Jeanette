@@ -9,33 +9,33 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      quote: "Jeanette has been an absolute game-changer for my business. Her organizational skills and attention to detail have freed up hours of my time each week.",
+      quote: "Jeanette war eine absolute Bereicherung für mein Unternehmen. Ihre organisatorischen Fähigkeiten und ihre Liebe zum Detail haben mir jede Woche mehrere Stunden Zeit erspart.",
       name: "Sarah Johnson",
-      title: "Marketing Agency Owner",
+      title: "Inhaberin einer Marketingagentur",
       image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
     },
     {
-      quote: "I was drowning in emails and administrative tasks until I hired Jeanette. She's reliable, proactive, and has a great eye for detail. Highly recommended!",
+      quote: "Ich bin in E-Mails und administrativen Aufgaben versunken, bis ich Jeanette eingestellt habe. Sie ist zuverlässig, proaktiv und hat ein gutes Auge fürs Detail. Sehr empfehlenswert!",
       name: "Michael Chen",
-      title: "Tech Startup Founder",
+      title: "Gründer eines Tech-Startups",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
     },
     {
-      quote: "Working with Jeanette has been a breath of fresh air. She's incredibly efficient and has helped me streamline my entire business operation.",
+      quote: "Die Zusammenarbeit mit Jeanette war wie ein frischer Wind. Sie ist unglaublich effizient und hat mir geholfen, meinen gesamten Geschäftsbetrieb zu optimieren.",
       name: "Emma Rodriguez",
-      title: "E-commerce Entrepreneur",
+      title: "E-Commerce-Unternehmerin",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
     },
     {
-      quote: "Since working with Jeanette, I've been able to focus on growing my business instead of drowning in administrative tasks. She's been a lifesaver!",
+      quote: "Seit ich mit Jeanette zusammenarbeite, kann ich mich auf das Wachstum meines Unternehmens konzentrieren, anstatt in administrativen Aufgaben zu versinken. Sie war eine Rettung!",
       name: "David Wilson",
-      title: "Financial Advisor",
+      title: "Finanzberater",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
     },
     {
-      quote: "Jeanette's attention to detail and proactive approach has transformed how my business operates. I can't imagine running my company without her support.",
+      quote: "Jeanettes Liebe zum Detail und ihr proaktiver Ansatz haben die Arbeitsweise meines Unternehmens verändert. Ich kann mir nicht vorstellen, mein Unternehmen ohne ihre Unterstützung zu führen.",
       name: "Sophia Martinez",
-      title: "Interior Designer",
+      title: "Innenarchitektin",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80"
     }
   ];
@@ -67,10 +67,10 @@ const Testimonials = () => {
       <div className="container">
         <div className="testimonials-header">
           <h2 className="section-title">
-            Client <span className="highlight">Testimonials</span>
+            Kunden<span className="highlight">referenzen</span>
           </h2>
           <p className="testimonials-subtitle">
-            Don't just take my word for it. Here's what my clients have to say.
+            Vertrauen Sie nicht nur meinem Wort. Hier ist, was meine Kunden zu sagen haben.
           </p>
         </div>
 

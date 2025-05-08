@@ -93,10 +93,10 @@ const Header = () => {
   };
 
   const navLinks = [
-    { href: '#about', text: 'About' },
-    { href: '#services', text: 'Services' },
-    { href: '#testimonials', text: 'Testimonials' },
-    { href: '#contact', text: 'Contact' }
+    { href: '#about', text: 'Über uns' },
+    { href: '#services', text: 'Leistungen' },
+    { href: '#testimonials', text: 'Referenzen' },
+    { href: '#contact', text: 'Kontakt' }
   ];
 
   return (
@@ -104,7 +104,7 @@ const Header = () => {
       <div className="container header-container">
         {/* Logo */}
         <a href="#" className="logo">
-          Jeanette's Office<span>.</span>
+          Jeanettes Büro<span>.</span>
         </a>
 
         {/* Regular Navigation */}
@@ -138,7 +138,7 @@ const Header = () => {
         <nav ref={mobileMenuRef} className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-header">
             <a href="#" className="logo">
-              Jeanette's Office<span>.</span>
+              Jeanettes Büro<span>.</span>
             </a>
             <button 
               className="mobile-menu-close" 

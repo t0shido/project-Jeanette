@@ -65,10 +65,10 @@ const Contact = () => {
         <div className="contact-content">
           <div className="contact-header">
             <h2 className="section-title">
-              Let's <span className="highlight">Connect</span>
+              Lassen Sie uns <span className="highlight">in Kontakt treten</span>
             </h2>
             <p className="contact-subtitle">
-              Ready to free up your time and focus on what matters most? Fill out the form below, and I'll get back to you within 24 hours.
+              Bereit, Ihre Zeit freizusetzen und sich auf das Wesentliche zu konzentrieren? Füllen Sie das Formular unten aus, und ich melde mich innerhalb von 24 Stunden bei Ihnen.
             </p>
           </div>
           
@@ -76,7 +76,7 @@ const Contact = () => {
             <div className="contact-info-container">
               <div className="contact-info-card">
                 <div className="contact-info-header">
-                  <h3>Contact Information</h3>
+                  <h3>Kontaktinformationen</h3>
                   <div className="contact-decoration"></div>
                 </div>
                 
@@ -88,7 +88,7 @@ const Contact = () => {
                       </svg>
                     </div>
                     <div className="contact-info-text">
-                      <h4>Email</h4>
+                      <h4>E-Mail</h4>
                       <a href="mailto:hello@jeanette.com">
                         hello@jeanette.com
                       </a>
@@ -102,8 +102,8 @@ const Contact = () => {
                       </svg>
                     </div>
                     <div className="contact-info-text">
-                      <h4>Availability</h4>
-                      <p>Monday - Friday: 9am - 5pm EST</p>
+                      <h4>Verfügbarkeit</h4>
+                      <p>Montag - Freitag: 9:00 - 17:00 Uhr MEZ</p>
                     </div>
                   </div>
                   
@@ -114,14 +114,14 @@ const Contact = () => {
                       </svg>
                     </div>
                     <div className="contact-info-text">
-                      <h4>Response Time</h4>
-                      <p>Usually within 24 hours</p>
+                      <h4>Antwortzeit</h4>
+                      <p>Gewöhnlich innerhalb von 24 Stunden</p>
                     </div>
                   </div>
                 </div>
                 
                 <div className="contact-social">
-                  <h3>Connect</h3>
+                  <h3>Verbinden</h3>
                   <div className="social-icons">
                     <a href="#" className="social-icon linkedin" aria-label="LinkedIn">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -147,7 +147,7 @@ const Contact = () => {
               <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-grid">
                   <div className={`form-group ${formFocus === 'name' ? 'focused' : ''}`}>
-                    <label htmlFor="name">Your Name</label>
+                    <label htmlFor="name">Ihr Name</label>
                     <input
                       type="text"
                       id="name"
@@ -156,13 +156,13 @@ const Contact = () => {
                       onChange={handleChange}
                       onFocus={() => handleFocus('name')}
                       onBlur={handleBlur}
-                      placeholder="John Doe"
+                      placeholder="Max Mustermann"
                       required
                     />
                   </div>
                   
                   <div className={`form-group ${formFocus === 'email' ? 'focused' : ''}`}>
-                    <label htmlFor="email">Email Address</label>
+                    <label htmlFor="email">E-Mail-Adresse</label>
                     <input
                       type="email"
                       id="email"
@@ -171,14 +171,14 @@ const Contact = () => {
                       onChange={handleChange}
                       onFocus={() => handleFocus('email')}
                       onBlur={handleBlur}
-                      placeholder="john@example.com"
+                      placeholder="max@beispiel.de"
                       required
                     />
                   </div>
                 </div>
                 
                 <div className={`form-group ${formFocus === 'service' ? 'focused' : ''}`}>
-                  <label htmlFor="service">Service You're Interested In</label>
+                  <label htmlFor="service">Dienstleistung, an der Sie interessiert sind</label>
                   <select
                     id="service"
                     name="service"
@@ -188,19 +188,19 @@ const Contact = () => {
                     onBlur={handleBlur}
                     required
                   >
-                    <option value="">Select a service</option>
-                    <option value="inbox-management">Inbox Management</option>
-                    <option value="calendar-management">Calendar Management</option>
-                    <option value="research">Research</option>
-                    <option value="data-entry">Data Entry</option>
-                    <option value="crm-management">CRM Management</option>
-                    <option value="social-media">Social Media Support</option>
-                    <option value="other">Other (Please specify)</option>
+                    <option value="">Wählen Sie eine Dienstleistung</option>
+                    <option value="inbox-management">E-Mail-Management</option>
+                    <option value="calendar-management">Kalender-Management</option>
+                    <option value="research">Recherche</option>
+                    <option value="data-entry">Dateneingabe</option>
+                    <option value="crm-management">CRM-Verwaltung</option>
+                    <option value="social-media">Social Media Unterstützung</option>
+                    <option value="other">Andere (Bitte angeben)</option>
                   </select>
                 </div>
                 
                 <div className={`form-group ${formFocus === 'message' ? 'focused' : ''}`}>
-                  <label htmlFor="message">Your Message</label>
+                  <label htmlFor="message">Ihre Nachricht</label>
                   <textarea
                     id="message"
                     name="message"
@@ -209,7 +209,7 @@ const Contact = () => {
                     onFocus={() => handleFocus('message')}
                     onBlur={handleBlur}
                     rows="5"
-                    placeholder="Tell me about your needs and how I can help..."
+                    placeholder="Erzählen Sie mir von Ihren Bedürfnissen und wie ich Ihnen helfen kann..."
                     required
                   ></textarea>
                 </div>
@@ -219,7 +219,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                   className={`submit-button ${isSubmitting ? 'submitting' : ''}`}
                 >
-                  <span className="button-text">{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+                  <span className="button-text">{isSubmitting ? 'Wird gesendet...' : 'Nachricht senden'}</span>
                   <span className="button-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -232,7 +232,7 @@ const Contact = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
-                    <p>Thank you for your message! I'll get back to you soon.</p>
+                    <p>Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen melden.</p>
                   </div>
                 )}
               </form>
