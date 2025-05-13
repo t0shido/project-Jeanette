@@ -93,7 +93,7 @@ const Header = () => {
   };
 
   const navLinks = [
-    { href: '#about', text: 'Über uns' },
+    { href: '#about', text: 'Über mich' },
     { href: '#services', text: 'Leistungen' },
     { href: '#testimonials', text: 'Referenzen' },
     { href: '#contact', text: 'Kontakt' }

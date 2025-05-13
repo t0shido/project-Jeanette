@@ -638,7 +638,9 @@ section {
 
 .about-image {
   width: 100%;
-  height: auto;
+  height: 600px; /* Further increased height to better match both frames combined */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  object-position: center; /* Centers the image */
   border-radius: 0.5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -658,7 +660,12 @@ section {
 }
 
 .highlight {
-  color: var(--primary);
+  color: var(--black) !important;
+}
+
+/* Ensure all section titles and their highlights are black */
+.section-title .highlight {
+  color: var(--black) !important;
 }
 
 .about-text {
@@ -861,6 +868,67 @@ section {
 .services-slider-container {
   margin-bottom: 2rem;
   padding: 0.5rem 0;
+  position: relative;
+}
+
+.slider-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid var(--neutral-300);
+  color: var(--neutral-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.slider-nav-button:hover {
+  background-color: var(--neutral-100);
+  color: var(--black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.slider-nav-button.prev {
+  left: -45px;
+}
+
+.slider-nav-button.next {
+  right: -45px;
+}
+
+.slider-nav-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Responsive styles for slider nav buttons */
+@media (max-width: 768px) {
+  .slider-nav-button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .slider-nav-button.prev {
+    left: -10px;
+  }
+  
+  .slider-nav-button.next {
+    right: -10px;
+  }
+  
+  .slider-nav-button svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .service-slide {
@@ -1173,36 +1241,49 @@ section {
 }
 
 /* Custom arrows for testimonial slider */
+.testimonial-slider-wrapper .slider-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+  border: 1px solid var(--neutral-300);
+  color: var(--neutral-900);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.testimonial-slider-wrapper .slider-nav-button:hover {
+  background-color: var(--neutral-100);
+  color: var(--black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.testimonial-slider-wrapper .slider-nav-button.prev {
+  left: -45px;
+}
+
+.testimonial-slider-wrapper .slider-nav-button.next {
+  right: -45px;
+}
+
+.testimonial-slider-wrapper .slider-nav-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* Hide the default slick arrows */
 .testimonial-slider .slick-prev,
 .testimonial-slider .slick-next {
-  width: 3rem;
-  height: 3rem;
-  background-color: var(--white);
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-  transition: all 0.3s ease;
-}
-
-.testimonial-slider .slick-prev:hover,
-.testimonial-slider .slick-next:hover {
-  background-color: var(--primary-50);
-  transform: scale(1.1);
-}
-
-.testimonial-slider .slick-prev {
-  left: -1.5rem;
-}
-
-.testimonial-slider .slick-next {
-  right: -1.5rem;
-}
-
-.testimonial-slider .slick-prev:before,
-.testimonial-slider .slick-next:before {
-  color: var(--primary);
-  font-size: 1.5rem;
-  opacity: 1;
+  display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -1225,7 +1306,7 @@ section {
   position: relative;
   padding: 6rem 0;
   overflow: hidden;
-  background-color: var(--white);
+  background-color: var(--neutral-50);
 }
 
 .contact-background {

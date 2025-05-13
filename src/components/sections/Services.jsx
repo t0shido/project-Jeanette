@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const Services = () => {
   const [slidesToShow, setSlidesToShow] = useState(3);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -120,7 +121,17 @@ const Services = () => {
         </div>
 
         <div className="services-slider-container">
-          <Slider {...sliderSettings}>
+          <button 
+            className="slider-nav-button prev" 
+            onClick={() => sliderRef.current.slickPrev()}
+            aria-label="Previous slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          
+          <Slider ref={sliderRef} {...sliderSettings}>
             {services.map((service, index) => (
               <div key={index} className="service-slide">
                 <div className="service-card">
@@ -137,16 +148,19 @@ const Services = () => {
               </div>
             ))}
           </Slider>
+          
+          <button 
+            className="slider-nav-button next" 
+            onClick={() => sliderRef.current.slickNext()}
+            aria-label="Next slide"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
         </div>
         
-        <div className="services-cta">
-          <p className="services-cta-text">
-            Benötigen Sie eine Dienstleistung, die hier nicht aufgeführt ist? Ich bin flexibel und kann mich an Ihre spezifischen Anforderungen anpassen.
-          </p>
-          <a href="#contact" className="button primary-button">
-            Besprechen Sie Ihre Bedürfnisse
-          </a>
-        </div>
+        {/* Services CTA removed as requested */}
       </div>
     </section>
   );

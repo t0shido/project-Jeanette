@@ -69,13 +69,21 @@ const Testimonials = () => {
           <h2 className="section-title">
             Kunden<span className="highlight">referenzen</span>
           </h2>
-          <p className="testimonials-subtitle">
-            Vertrauen Sie nicht nur meinem Wort. Hier ist, was meine Kunden zu sagen haben.
-          </p>
+          {/* Testimonials subtitle removed as requested */}
         </div>
 
         <div className="testimonials-container">
           <div className="testimonial-slider-wrapper">
+            <button 
+              className="slider-nav-button prev" 
+              onClick={() => sliderRef.current.slickPrev()}
+              aria-label="Previous testimonial"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            
             <Slider ref={sliderRef} {...settings} className="testimonial-slider">
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="testimonial-slide">
@@ -108,6 +116,16 @@ const Testimonials = () => {
                 </div>
               ))}
             </Slider>
+            
+            <button 
+              className="slider-nav-button next" 
+              onClick={() => sliderRef.current.slickNext()}
+              aria-label="Next testimonial"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
             
             <div className="testimonial-nav">
               {testimonials.map((_, index) => (

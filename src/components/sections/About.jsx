@@ -37,7 +37,7 @@ const About = () => {
           <div className="about-image-container">
             <div className="about-image-frame"></div>
             <img
-              src="/images/hero_image.jpg"
+              src="/images/about_me.jpg"
               alt="Jeanette - Virtuelle Assistentin"
               className="about-image"
             />
