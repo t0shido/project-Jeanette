@@ -86,10 +86,10 @@ const Services = () => {
     speed: 500,
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
+    autoplay: false, // Disabled autoplay so frames only move when clicking arrows
     arrows: true,
+    swipe: false, // Disabled swiping on touch devices
+    draggable: false, // Disabled dragging with mouse
     responsive: [
       {
         breakpoint: 1024,

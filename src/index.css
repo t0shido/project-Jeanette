@@ -18,6 +18,7 @@
   --primary-700: #0369a1;
   --primary-800: #075985;
   --primary-900: #0c4a6e;
+  --about-image-position: 0%; /* 0% is top, 50% is center, 100% is bottom */
   
   --neutral-50: #f9fafb;
   --neutral-100: #f3f4f6;
@@ -491,16 +492,36 @@ section {
 }
 
 /* Circle frame for profile image */
+/* Container for fixed positioning of the circle frame */
+.circle-frame-container {
+  position: absolute;
+  top: 60%; /* Moved down from 50% to 60% */
+  left: 20%; /* Positioned at 20% from the left edge on mobile */
+  transform: translate(-50%, -50%); /* This centers the element at the 20% mark */
+  z-index: 10;
+}
+
+/* Ensure consistent positioning across different screen sizes */
+@media (min-width: 768px) {
+  .circle-frame-container {
+    left: 20%; /* Keep consistent on tablets */
+  }
+}
+
+@media (min-width: 992px) {
+  .circle-frame-container {
+    left: 20%; /* Keep consistent on desktop */
+  }
+}
+
 .circle-frame {
-  width: 280px;           /* smaller size for mobile */
-  height: 280px;
+  width: 320px;           /* consistent size across all screen sizes */
+  height: 320px;
   border-radius: 50%;     /* makes it a circle */
   overflow: hidden;       /* hides parts outside the circle */
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   border: 5px solid white; /* Adds a white border around the circle */
-  margin: 0 auto; /* Center horizontally */
-  margin-top: 20px; /* Adjust vertical position */
 }
 
 .profile-image {
@@ -577,11 +598,7 @@ section {
     margin-bottom: 0;
   }
   
-  .circle-frame {
-    width: 350px; /* larger size for desktop */
-    height: 350px;
-    margin-left: 20px; /* Adjust horizontal position */
-  }
+  /* Circle frame now has consistent size and position across all screen sizes */
   
   .hero-slogan p {
     font-size: 1.8rem;
@@ -640,7 +657,7 @@ section {
   width: 100%;
   height: 600px; /* Further increased height to better match both frames combined */
   object-fit: cover; /* Ensures the image covers the area without distortion */
-  object-position: center; /* Centers the image */
+  object-position: center var(--about-image-position); /* Centers horizontally and uses variable for vertical position */
   border-radius: 0.5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -676,6 +693,23 @@ section {
 }
 
 /* Neue Styles für den About-Bereich */
+:root {
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #e74c3c;
+  --secondary-dark: #c0392b;
+  --text-color: #333333;
+  --light-text: #666666;
+  --background-color: #ffffff;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #999999;
+  --border-radius: 0.25rem;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --about-image-position: 0%; /* 0% is top, 50% is center, 100% is bottom */
+}
+
 .about-sections {
   display: grid;
   grid-template-columns: 1fr;
@@ -1564,7 +1598,7 @@ section {
   justify-content: center;
   width: 100%;
   padding: 1rem 1.5rem;
-  background-color: var(--primary);
+  background-color: #0ea5e9; /* Explicitly using the primary-500 color */
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -1573,10 +1607,12 @@ section {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  visibility: visible; /* Explicitly set visibility */
+  opacity: 1; /* Explicitly set opacity */
 }
 
 .submit-button:hover {
-  background-color: var(--primary-600);
+  background-color: #0284c7; /* Explicitly using the primary-600 color */
   transform: translateY(-2px);
 }
 
@@ -1594,8 +1630,8 @@ section {
   align-items: center;
   justify-content: center;
   margin-left: 0.5rem;
-  opacity: 0;
-  transform: translateX(-10px);
+  opacity: 1;
+  transform: translateX(0);
   transition: all 0.3s ease;
 }
 
@@ -1604,13 +1640,10 @@ section {
   height: 1.25rem;
 }
 
-.submit-button:hover .button-icon {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* Button icon is now visible by default, no special hover effects needed */
 
 .submit-button.submitting {
-  background-color: var(--primary-400);
+  background-color: #38bdf8; /* Explicitly using the primary-400 color */
   cursor: not-allowed;
 }
 
@@ -1643,6 +1676,67 @@ section {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Footer Styles */
+footer {
+  margin-top: 3rem; /* Adding gap between contact section and footer */
+}
+
+.footer-container {
+  padding: 2rem 0;
+}
+
+.footer-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--neutral-800);
+  text-decoration: none;
+}
+
+.footer-logo span {
+  color: #0ea5e9; /* Using the primary-500 color */
+}
+
+.footer-description {
+  margin-top: 1rem;
+  color: var(--neutral-600);
+  max-width: 400px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--neutral-100);
+  color: var(--neutral-700);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background-color: #0ea5e9; /* Using the primary-500 color */
+  color: white;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--neutral-200);
+  margin: 2rem 0;
+}
+
+.footer-copyright {
+  color: var(--neutral-500);
+  font-size: 0.875rem;
 }
 
 /* Responsive */

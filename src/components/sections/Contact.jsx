@@ -68,7 +68,7 @@ const Contact = () => {
               Lassen Sie uns <span className="highlight">in Kontakt treten</span>
             </h2>
             <p className="contact-subtitle">
-              Bereit, Ihre Zeit freizusetzen und sich auf das Wesentliche zu konzentrieren? Füllen Sie das Formular unten aus, und ich melde mich innerhalb von 24 Stunden bei Ihnen.
+              Wenn Sie Unterstützung wünschen, füllen Sie bitte das untenstehende Formular aus. Ich melde mich innerhalb von 24 Stunden bei Ihnen.
             </p>
           </div>
           
