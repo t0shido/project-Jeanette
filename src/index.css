@@ -499,21 +499,23 @@ section {
 .circle-frame-container {
   position: absolute;
   top: 60%; /* Moved down from 50% to 60% */
-  left: 20%; /* Positioned at 20% from the left edge on mobile */
-  transform: translate(-50%, -50%); /* This centers the element at the 20% mark */
+  left: 50%; /* Centered horizontally on mobile for better visibility */
+  transform: translate(-50%, -50%); /* This centers the element */
   z-index: 10;
 }
 
 /* Ensure consistent positioning across different screen sizes */
 @media (min-width: 768px) {
   .circle-frame-container {
-    left: 20%; /* Keep consistent on tablets */
+    left: 25%; /* Position from left on tablets */
+    top: 50%; /* Keep vertically centered */
   }
 }
 
 @media (min-width: 992px) {
   .circle-frame-container {
-    left: 20%; /* Keep consistent on desktop */
+    left: 20%; /* Position from left on desktop */
+    top: 50%; /* Keep vertically centered */
   }
 }
 
@@ -528,14 +530,31 @@ section {
 }
 
 .profile-image {
-  width: 130%; /* Make the image wider than the container to allow more horizontal movement */
+  width: 130%; /* Match desktop width for consistency */
   height: 100%;
   object-fit: cover;
-  transform: scale(1.2);  /* zoom in - adjust as needed */
+  transform: scale(1.2);  /* Match desktop zoom level */
   transform-origin: center; /* Zoom from center */
   position: relative;
-  left: -20%; /* Negative value moves left, positive moves right */
-  object-position: 0 10%; /* Keep vertical positioning (10% from top) */
+  left: -22%; /* Slightly off-center to match desktop style */
+  object-position: 0 10%; /* Match desktop vertical positioning */
+}
+
+/* Adjust profile image positioning for larger screens */
+@media (min-width: 768px) {
+  .profile-image {
+    width: 130%; /* Keep consistent with mobile */
+    left: -15%; /* Keep consistent with mobile */
+    object-position: 0 10%; /* Keep consistent vertical positioning */
+  }
+}
+
+@media (min-width: 992px) {
+  .profile-image {
+    width: 130%; /* Keep consistent width */
+    left: -20%; /* Slight adjustment for desktop */
+    object-position: 0 10%; /* Keep vertical positioning */
+  }
 }
 
 /* Responsive styles for hero section */
