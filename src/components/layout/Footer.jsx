@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container footer-container">
         <div>
           <a href="#" className="footer-logo">
-            Jeanette<span>.</span>
+            Jeanettes Office<span>.</span>
           </a>
           <p className="footer-description">
             Professionelle virtuelle Assistenzdienstleistungen, damit Sie sich auf das konzentrieren können, was am wichtigsten ist.
@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="footer-divider"></div>
         
         <div className="footer-copyright">
-          <p>© {currentYear} Jeanette Virtuelle Assistentin. Alle Rechte vorbehalten.</p>
+          <p>© {currentYear} Jeanettes Office. Alle Rechte vorbehalten.</p>
         </div>
       </div>
     </footer>

@@ -66,7 +66,7 @@ const Testimonials = () => {
     <section id="testimonials">
       <div className="container">
         <div className="testimonials-header">
-          <h2 className="section-title">
+          <h2 className="section-title testimonials-title">
             Kunden<span className="highlight">referenzen</span>
           </h2>
           {/* Testimonials subtitle removed as requested */}

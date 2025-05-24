@@ -1,16 +1,20 @@
 const Hero = () => {
   return (
-    <section 
-      id="hero" 
-      style={{ 
+    <section id="hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden', backgroundColor: 'white' }}>
+      {/* Background image div */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100%',
+        height: 'calc(100vh - 60px)', /* Gap matches approximate navbar height */
         backgroundImage: "url('/images/hero_background.jpg')",
-        height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        position: 'relative' // Added for absolute positioning context
-      }}
-    >
-      {/* Fixed position circle frame container */}
+        zIndex: 1
+      }}></div>
+      
+      {/* Fixed position circle frame container - using original class without style override */}
       <div className="circle-frame-container">
         <div className="circle-frame animate-slide-in-right">
           <img
@@ -20,8 +24,17 @@ const Hero = () => {
           />
         </div>
       </div>
-
-      <div className="hero-bottom-line"></div>
+      
+      {/* White line at bottom */}
+      <div style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '100%',
+        height: '5px',
+        backgroundColor: 'white',
+        zIndex: 10 /* Make sure it's above other elements */
+      }}></div>
     </section>
   );
 };
