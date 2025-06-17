@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
@@ -5,7 +7,7 @@ const Footer = () => {
     <footer>
       <div className="container footer-container">
         <div>
-          <a href="#" className="footer-logo">
+          <a href="/" className="footer-logo">
             Jeanettes Office<span>.</span>
           </a>
           <p className="footer-description">
@@ -18,7 +20,7 @@ const Footer = () => {
         <div className="footer-divider"></div>
         
         <div className="footer-copyright">
-          <p>© {currentYear} Jeanettes Office. Alle Rechte vorbehalten.</p>
+          <p>© {currentYear} Jeanettes Office. Alle Rechte vorbehalten. | <Link to="/impressum" className="impressum-link">Impressum</Link> | <Link to="/datenschutz" className="impressum-link">Datenschutz</Link></p>
         </div>
       </div>
     </footer>

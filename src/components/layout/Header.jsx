@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
@@ -76,8 +79,13 @@ const Header = () => {
   
   // Handle link clicks with smooth scrolling and menu closing
   const handleLinkClick = (e, href) => {
-    e.preventDefault();
     closeMobileMenu();
+    
+    // If we're not on the home page, don't try to scroll
+    if (!isHomePage) return;
+    
+    // Only prevent default and handle scroll if we're on the home page
+    e.preventDefault();
     
     // Smooth scroll to the target section
     const targetElement = document.querySelector(href);
@@ -92,18 +100,19 @@ const Header = () => {
     }
   };
 
+  // Links for navigation
   const navLinks = [
-    { href: '#about', text: 'Über mich' },
-    { href: '#services', text: 'Leistungen' },
-    { href: '#testimonials', text: 'Referenzen' },
-    { href: '#contact', text: 'Kontakt' }
+    { href: '#about', text: 'Über mich', homePath: '/' },
+    { href: '#services', text: 'Leistungen', homePath: '/' },
+    { href: '#testimonials', text: 'Referenzen', homePath: '/' },
+    { href: '#contact', text: 'Kontakt', homePath: '/' }
   ];
 
   return (
     <header className={`${isScrolled ? 'scrolled' : ''} ${mobileMenuOpen ? 'menu-open' : ''}`}>
       <div className="container header-container">
         {/* Logo */}
-        <a href="#" className="logo">
+        <a href="/" className="logo">
           <div className="logo-main">Jeanettes Office<span>.</span></div>
           <div className="logo-slogan">Deine virtuelle Assistenz</div>
         </a>
@@ -111,13 +120,22 @@ const Header = () => {
         {/* Regular Navigation */}
         <nav className="nav-regular">
           {navLinks.map((link, index) => (
-            <a 
-              key={index} 
-              href={link.href} 
-              onClick={(e) => handleLinkClick(e, link.href)}
-            >
-              {link.text}
-            </a>
+            isHomePage ? (
+              <a 
+                key={index} 
+                href={link.href} 
+                onClick={(e) => handleLinkClick(e, link.href)}
+              >
+                {link.text}
+              </a>
+            ) : (
+              <Link 
+                key={index} 
+                to={link.homePath} 
+              >
+                {link.text}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -138,7 +156,7 @@ const Header = () => {
         <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`} onClick={closeMobileMenu}></div>
         <nav ref={mobileMenuRef} className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-header">
-            <a href="#" className="logo">
+            <a href="/" className="logo">
               <div className="logo-main">Jeanettes Office<span>.</span></div>
               <div className="logo-slogan">Deine virtuelle Assistenz</div>
             </a>
@@ -154,13 +172,22 @@ const Header = () => {
           </div>
           <div className="mobile-menu-content">
             {navLinks.map((link, index) => (
-              <a 
-                key={index} 
-                href={link.href} 
-                onClick={(e) => handleLinkClick(e, link.href)}
-              >
-                {link.text}
-              </a>
+              isHomePage ? (
+                <a 
+                  key={index} 
+                  href={link.href} 
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                >
+                  {link.text}
+                </a>
+              ) : (
+                <Link 
+                  key={index} 
+                  to={link.homePath} 
+                >
+                  {link.text}
+                </Link>
+              )
             ))}
           </div>
         </nav>
