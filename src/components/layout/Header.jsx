@@ -168,7 +168,7 @@ const Header = () => {
           <div className="mobile-menu-header">
             <a href="/" className="logo">
               <div className="logo-main">Jeanettes Office<span>.</span></div>
-              <div className="logo-slogan">Deine virtuelle Assistenz</div>
+              <div className="logo-slogan">{t('logo.slogan')}</div>
             </a>
             <button 
               className="mobile-menu-close" 
@@ -199,6 +199,11 @@ const Header = () => {
                 </Link>
               )
             ))}
+            
+            {/* Language Switcher in Mobile Menu */}
+            <div className="mobile-language-switcher">
+              <LanguageSwitcher />
+            </div>
           </div>
         </nav>
       </div>

@@ -377,6 +377,19 @@ header.scrolled {
   color: var(--primary-500);
 }
 
+/* Mobile Language Switcher */
+.mobile-language-switcher {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--neutral-100);
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-language-switcher .language-switcher {
+  margin-left: 0; /* Reset margin for mobile */
+}
+
 /* Responsive Header */
 @media (max-width: 768px) {
   .nav-regular {
@@ -392,9 +405,9 @@ header.scrolled {
     box-shadow: none;
   }
   
-  /* Reduce language switcher margin on mobile */
-  .language-switcher {
-    margin-left: 1rem;
+  /* Hide desktop language switcher on mobile */
+  .nav-container .language-switcher {
+    display: none;
   }
 }
 
