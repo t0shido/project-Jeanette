@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from '../../translations';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -11,7 +13,7 @@ const Footer = () => {
             Jeanettes Office<span>.</span>
           </a>
           <p className="footer-description">
-            Professionelle virtuelle Assistenzdienstleistungen, damit Sie sich auf das konzentrieren können, was am wichtigsten ist.
+            {t('footer.description')}
           </p>
         </div>
         
@@ -20,7 +22,7 @@ const Footer = () => {
         <div className="footer-divider"></div>
         
         <div className="footer-copyright">
-          <p>© {currentYear} Jeanettes Office. Alle Rechte vorbehalten. | <Link to="/impressum" className="impressum-link">Impressum</Link> | <Link to="/datenschutz" className="impressum-link">Datenschutz</Link></p>
+          <p>© {currentYear} Jeanettes Office. {t('footer.copyright')} | <Link to="/impressum" className="impressum-link">{t('footer.imprint')}</Link> | <Link to="/datenschutz" className="impressum-link">{t('footer.privacy')}</Link></p>
         </div>
       </div>
     </footer>

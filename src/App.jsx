@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { LanguageProvider } from './contexts/LanguageContext';
 
 // Layout Components
 import Header from './components/layout/Header'
@@ -13,19 +14,21 @@ import DatenschutzPage from './pages/DatenschutzPage'
 function App() {
 
   return (
-    <Router>
-      <div>
-        <Header />
-        
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/impressum" element={<ImpressumPage />} />
-          <Route path="/datenschutz" element={<DatenschutzPage />} />
-        </Routes>
-        
-        <Footer />
-      </div>
-    </Router>
+    <LanguageProvider>
+      <Router>
+        <div>
+          <Header />
+          
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/impressum" element={<ImpressumPage />} />
+            <Route path="/datenschutz" element={<DatenschutzPage />} />
+          </Routes>
+          
+          <Footer />
+        </div>
+      </Router>
+    </LanguageProvider>
   )
 }
 

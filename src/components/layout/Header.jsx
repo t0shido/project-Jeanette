@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import LanguageSwitcher from '../ui/LanguageSwitcher';
+import { useTranslation } from '../../translations';
 
 const Header = () => {
+  const { t } = useTranslation();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   const [isScrolled, setIsScrolled] = useState(false);
@@ -90,9 +93,10 @@ const Header = () => {
     // Smooth scroll to the target section
     const targetElement = document.querySelector(href);
     if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80, // Offset for header
-        behavior: 'smooth'
+      // Use native scrollIntoView with CSS scroll-margin-top handling the offset
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
       });
       
       // Update URL hash without scrolling
@@ -102,10 +106,10 @@ const Header = () => {
 
   // Links for navigation
   const navLinks = [
-    { href: '#about', text: 'Über mich', homePath: '/' },
-    { href: '#services', text: 'Leistungen', homePath: '/' },
-    { href: '#testimonials', text: 'Referenzen', homePath: '/' },
-    { href: '#contact', text: 'Kontakt', homePath: '/' }
+    { href: '#about', text: t('nav.about'), homePath: '/' },
+    { href: '#services', text: t('nav.services'), homePath: '/' },
+    { href: '#testimonials', text: t('nav.testimonials'), homePath: '/' },
+    { href: '#contact', text: t('nav.contact'), homePath: '/' }
   ];
 
   return (
@@ -114,30 +118,36 @@ const Header = () => {
         {/* Logo */}
         <a href="/" className="logo">
           <div className="logo-main">Jeanettes Office<span>.</span></div>
-          <div className="logo-slogan">Deine virtuelle Assistenz</div>
+          <div className="logo-slogan">{t('logo.slogan')}</div>
         </a>
 
-        {/* Regular Navigation */}
-        <nav className="nav-regular">
-          {navLinks.map((link, index) => (
-            isHomePage ? (
-              <a 
-                key={index} 
-                href={link.href} 
-                onClick={(e) => handleLinkClick(e, link.href)}
-              >
-                {link.text}
-              </a>
-            ) : (
-              <Link 
-                key={index} 
-                to={link.homePath} 
-              >
-                {link.text}
-              </Link>
-            )
-          ))}
-        </nav>
+        {/* Navigation and Language Switcher Container */}
+        <div className="nav-container">
+          {/* Regular Navigation */}
+          <nav className="nav-regular">
+            {navLinks.map((link, index) => (
+              isHomePage ? (
+                <a 
+                  key={index} 
+                  href={link.href} 
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                >
+                  {link.text}
+                </a>
+              ) : (
+                <Link 
+                  key={index} 
+                  to={link.homePath} 
+                >
+                  {link.text}
+                </Link>
+              )
+            ))}
+          </nav>
+          
+          {/* Language Switcher */}
+          <LanguageSwitcher />
+        </div>
 
         {/* Mobile Menu Button */}
         <button 

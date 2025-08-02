@@ -10,32 +10,32 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      name: "Anna Müller",
-      title: "Geschäftsführerin",
+      name: "Anna Miller",
+      title: "CEO",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit.",
-      name: "Thomas Schmidt",
-      title: "Projektleiter",
+      name: "Thomas Smith",
+      title: "Project Manager",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-      name: "Lisa Weber",
-      title: "Marketing Managerin",
+      name: "Lisa Wilson",
+      title: "Marketing Manager",
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.",
-      name: "Mark Fischer",
-      title: "IT-Consultant",
+      name: "Mark Fisher",
+      title: "IT Consultant",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.",
-      name: "Julia Becker",
-      title: "Beraterin",
+      name: "Julia Baker",
+      title: "Consultant",
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     }
   ];
@@ -67,7 +67,7 @@ const Testimonials = () => {
       <div className="container">
         <div className="testimonials-header">
           <h2 className="section-title testimonials-title">
-            Kunden<span className="highlight">referenzen</span>
+            Client<span className="highlight">References</span>
           </h2>
           {/* Testimonials subtitle removed as requested */}
         </div>

@@ -1,21 +1,34 @@
 import React from 'react';
 
 // Section Components
-import Hero from '../components/sections/Hero';
-import About from '../components/sections/About';
-import Services from '../components/sections/Services';
-import Testimonials from '../components/sections/Testimonials';
-import Contact from '../components/sections/Contact';
+import { useLanguage } from '../contexts/LanguageContext';
+
+// German components
+import HeroDE from '../components/sections/de/Hero';
+import AboutDE from '../components/sections/de/About';
+import ServicesDE from '../components/sections/de/Services';
+import TestimonialsDE from '../components/sections/de/Testimonials';
+import ContactDE from '../components/sections/de/Contact';
+
+// English components
+import HeroEN from '../components/sections/en/Hero';
+import AboutEN from '../components/sections/en/About';
+import ServicesEN from '../components/sections/en/Services';
+import TestimonialsEN from '../components/sections/en/Testimonials';
+import ContactEN from '../components/sections/en/Contact';
 
 const Home = () => {
+  const { language } = useLanguage();
+  const isGerman = language === 'de';
+
   return (
-    <main>
-      <Hero />
-      <About />
-      <Services />
-      <Testimonials />
-      <Contact />
-    </main>
+    <>
+      {isGerman ? <HeroDE /> : <HeroEN />}
+      {isGerman ? <AboutDE /> : <AboutEN />}
+      {isGerman ? <ServicesDE /> : <ServicesEN />}
+      {isGerman ? <TestimonialsDE /> : <TestimonialsEN />}
+      {isGerman ? <ContactDE /> : <ContactEN />}
+    </>
   );
 };
 
