@@ -313,10 +313,10 @@ header.scrolled {
 
 .mobile-menu-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Align close button to the right */
   align-items: center;
   padding: 1.5rem;
-  border-bottom: 1px solid var(--neutral-100);
+  /* Removed border-bottom underline */
 }
 
 .mobile-menu-header .logo {
@@ -365,12 +365,8 @@ header.scrolled {
   color: var(--neutral-800);
   font-weight: 500;
   padding: 1rem 0;
-  border-bottom: 1px solid var(--neutral-100);
+  /* Removed border-bottom underlines */
   transition: color 0.2s ease-in-out;
-}
-
-.mobile-menu-content a:last-child {
-  border-bottom: none;
 }
 
 .mobile-menu-content a:hover {

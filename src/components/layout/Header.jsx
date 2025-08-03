@@ -166,10 +166,6 @@ const Header = () => {
         <div className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`} onClick={closeMobileMenu}></div>
         <nav ref={mobileMenuRef} className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
           <div className="mobile-menu-header">
-            <a href="/" className="logo">
-              <div className="logo-main">Jeanettes Office<span>.</span></div>
-              <div className="logo-slogan">{t('logo.slogan')}</div>
-            </a>
             <button 
               className="mobile-menu-close" 
               onClick={closeMobileMenu}
