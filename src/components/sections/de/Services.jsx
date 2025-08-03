@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const Services = () => {
-  const [slidesToShow, setSlidesToShow] = useState(3);
+  const [slidesToShow, setSlidesToShow] = useState(1); // Show only one card at a time
   const [hoveredCard, setHoveredCard] = useState(null);
   const sliderRef = useRef(null);
 
@@ -87,23 +87,30 @@ const Services = () => {
     speed: 500,
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
-    autoplay: false, // Disabled autoplay so frames only move when clicking arrows
-    arrows: true,
-    swipe: false, // Disabled swiping on touch devices
-    draggable: false, // Disabled dragging with mouse
+    autoplay: true, // Enable autoplay for carousel behavior
+    autoplaySpeed: 4000, // Auto-advance every 4 seconds
+    pauseOnHover: true, // Pause when hovering
+    arrows: true, // Enable arrows for navigation
+    swipe: false, // Disable swiping on touch devices
+    draggable: false, // Disable dragging with mouse
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1, // One card on tablets
           slidesToScroll: 1
         }
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToShow: 1, // One card on mobile
+          slidesToScroll: 1,
+          swipe: true, // Enable swipe on mobile
+          touchMove: true, // Enable touch movement
+          draggable: true, // Enable dragging on mobile
+          fade: true, // Smooth fade transition like testimonials
+          arrows: false // Hide arrows on mobile
         }
       }
     ]

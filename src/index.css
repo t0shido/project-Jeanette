@@ -394,6 +394,7 @@ header.scrolled {
   
   .mobile-menu-button {
     display: flex;
+    margin-right: 0.75rem; /* Add margin to prevent cutoff at right edge */
   }
   
   header.menu-open {
@@ -1067,10 +1068,10 @@ section {
 .service-card {
   background-color: var(--white);
   border-radius: 0.75rem;
-  padding: 1.5rem;
+  padding: 2.5rem; /* Increased padding for wider, more spacious cards */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   height: 100%; /* Fill the entire slide height */
-  min-height: 290px; /* Reduced minimum height to ensure consistency */
+  min-height: 240px; /* Reduced height to eliminate excess spacing */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -1242,25 +1243,38 @@ section {
 /* Main container with padding for navigation arrows */
 .services-slider-container {
   position: relative;
-  padding: 20px 50px; /* Add horizontal padding for arrows */
-  overflow: visible !important; /* Allow arrows to be visible */
-  max-width: 1100px; /* Increase width to accommodate padding */
+  padding: 0 80px; /* Extra padding for outside arrows */
+  overflow: visible !important;
+  max-width: 1200px; /* Increased width for wider cards */
   margin: 0 auto;
 }
 
-/* But the inner elements need visible overflow for the hover effect */
+/* Create framed effect - hide side cards on desktop, show on mobile */
 .services-slider-container .slick-list {
-  overflow: hidden !important; /* Hide slides outside view */
+  overflow: hidden !important; /* Hide partial cards on sides for framed effect */
 }
 
-/* Only the slide itself should have visible overflow for hover effect */
+/* On mobile, allow full card visibility */
+@media (max-width: 768px) {
+  .services-slider-container .slick-list {
+    overflow: visible !important; /* Show full cards on mobile */
+  }
+}
+
+/* Allow individual slides to show hover effects */
 .services-slider-container .slick-slide {
   overflow: visible !important;
 }
 
+/* Create extra space around active slide for hover effects */
+.services-slider-container .slick-slide.slick-active {
+  z-index: 10;
+  position: relative;
+}
+
 .service-slide {
-  padding: 15px;
-  height: 350px;
+  padding: 20px 20px 30px 20px; /* Reduced bottom padding */
+  height: 340px; /* Reduced height to eliminate excess spacing */
 }
 
 /* Increase margin to ensure cards don't overlap when hovering */
@@ -1268,15 +1282,67 @@ section {
   margin: 10px 0;
 }
 
-/* Position the navigation buttons within the padded area */
-.services-slider-container .slider-nav-button.prev {
-  left: 10px;
+/* Position Services arrows outside carousel and vertically centered with card */
+.services-slider-container .slider-nav-button {
+  position: absolute;
+  top: calc(50% - 25px); /* Adjusted to center with actual card height */
+  transform: translateY(-50%);
   z-index: 10;
 }
 
+.services-slider-container .slider-nav-button.prev {
+  left: -15px; /* Extremely close to the carousel frame */
+}
+
 .services-slider-container .slider-nav-button.next {
-  right: 10px;
-  z-index: 10;
+  right: -15px; /* Extremely close to the carousel frame */
+}
+
+/* Move services slider dots further down to avoid overlapping with cards */
+.services-slider-container .slick-dots {
+  bottom: -60px !important; /* Move dots even further down */
+  margin-bottom: 0;
+}
+
+/* Add extra margin to services section to accommodate lower dots */
+.services-section {
+  padding-bottom: 5rem; /* Extra space for dots */
+}
+
+/* Hide arrow buttons on mobile devices and make service cards bigger */
+@media (max-width: 768px) {
+  .slider-nav-button {
+    display: none !important;
+  }
+  
+  .testimonial-slider-wrapper .slider-nav-button {
+    display: none !important;
+  }
+  
+  .services-slider-container .slider-nav-button {
+    display: none !important;
+  }
+  
+  /* Make service cards bigger on mobile to fill more space */
+  .services-slider-container {
+    padding: 0 10px; /* Reduced padding for more card space */
+    max-width: 100%; /* Use full width on mobile */
+  }
+  
+  .service-slide {
+    padding: 10px; /* Reduced slide padding for more card space */
+  }
+  
+  .service-card {
+    margin: 0 5px; /* Minimal margin for maximum width */
+    padding: 2rem; /* Keep generous internal padding */
+    min-height: 200px; /* Shorter cards on mobile */
+  }
+  
+  .service-slide {
+    height: 280px; /* Shorter slide height on mobile */
+    padding: 15px 15px 20px 15px; /* Reduced padding on mobile */
+  }
 }
 
 /* Ensure the service card hover effect works */
@@ -1453,7 +1519,7 @@ section {
 /* Custom arrows for testimonial slider */
 .testimonial-slider-wrapper .slider-nav-button {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 15px); /* Adjusted to center with actual testimonial card */
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
@@ -1865,7 +1931,7 @@ footer {
 }
 
 .footer-container {
-  padding: 2rem 0;
+  padding: 2rem 1.5rem; /* Added horizontal padding for spacing from edges */
 }
 
 .footer-logo {

@@ -50,13 +50,17 @@ const Testimonials = () => {
     autoplaySpeed: 5000,
     pauseOnHover: true,
     fade: true,
+    arrows: true, // Enable arrows for navigation
     beforeChange: (current, next) => setActiveSlide(next),
     responsive: [
       {
         breakpoint: 768,
         settings: {
           arrows: false,
-          dots: true
+          dots: false, // Keep dots disabled to avoid duplicates with custom dots
+          swipe: true, // Enable swipe on mobile
+          touchMove: true, // Enable touch movement
+          draggable: true // Enable dragging on mobile
         }
       }
     ]
@@ -98,14 +102,7 @@ const Testimonials = () => {
                     </p>
                     <div className="testimonial-author">
                       <div className="testimonial-author-image">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name} 
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = "https://via.placeholder.com/150";
-                          }}
-                        />
+                        {/* Image removed - blank space */}
                       </div>
                       <div className="testimonial-author-info">
                         <h4>{testimonial.name}</h4>
