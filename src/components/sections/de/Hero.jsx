@@ -12,19 +12,23 @@ const Hero = () => {
         zIndex: '10'
       }}></div>
       <div className="hero-background">
-        <img 
-          src="/images/hero_background.jpg" 
-          alt="Jeanette - Virtuelle Assistentin" 
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0
-          }}
-        />
+        <picture>
+          <source srcSet="/images/hero_background.webp" type="image/webp" />
+          <img 
+            src="/images/hero_background.jpg" 
+            alt="Jeanette - Virtuelle Assistenz" 
+            fetchpriority="high"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: 0
+            }}
+          />
+        </picture>
       </div>
       
       <div className="hero-content">
@@ -45,11 +49,15 @@ const Hero = () => {
       
       <div className="circle-frame-container">
         <div className="circle-frame">
-          <img 
-            src="/images/hero_image.jpg" 
-            alt="Jeanette" 
-            className="profile-image"
-          />
+          <picture>
+            <source srcSet="/images/hero_image.webp" type="image/webp" />
+            <img 
+              src="/images/hero_image.jpg" 
+              alt="Jeanette" 
+              className="profile-image"
+              loading="eager"
+            />
+          </picture>
         </div>
       </div>
       
