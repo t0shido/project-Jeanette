@@ -18,7 +18,7 @@ const Impressum = () => {
           <div className="impressum-block">
             <h3>Angaben gemäß § 5 TMG</h3>
             <p>
-              Jeanettes Office<br />
+              Jeanette's Office<br />
               Musterstraße 123<br />
               12345 Musterstadt<br />
               Deutschland

@@ -117,7 +117,7 @@ const Header = () => {
       <div className="container header-container">
         {/* Logo */}
         <a href="/" className="logo">
-          <div className="logo-main">Jeanettes Office<span>.</span></div>
+          <div className="logo-main">Jeanette's Office<span>.</span></div>
           <div className="logo-slogan">{t('logo.slogan')}</div>
         </a>
 

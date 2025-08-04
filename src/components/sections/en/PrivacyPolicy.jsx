@@ -84,7 +84,7 @@ const PrivacyPolicy = () => {
             </p>
             
             <p>
-              Jeanettes Office<br />
+              Jeanette's Office<br />
               Sample Street 123<br />
               12345 Sample City<br />
               Germany

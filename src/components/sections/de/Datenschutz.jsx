@@ -84,7 +84,7 @@ const Datenschutz = () => {
             </p>
             
             <p>
-              Jeanettes Office<br />
+              Jeanette's Office<br />
               Musterstraße 123<br />
               12345 Musterstadt<br />
               Deutschland

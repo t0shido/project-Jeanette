@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container footer-container">
         <div>
           <a href="/" className="footer-logo">
-            Jeanettes Office<span>.</span>
+            Jeanette's Office<span>.</span>
           </a>
           <p className="footer-description">
             {t('footer.description')}
@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="footer-divider"></div>
         
         <div className="footer-copyright">
-          <p>© {currentYear} Jeanettes Office. {t('footer.copyright')} | <Link to="/impressum" className="impressum-link">{t('footer.imprint')}</Link> | <Link to="/datenschutz" className="impressum-link">{t('footer.privacy')}</Link></p>
+          <p>© {currentYear} Jeanette's Office. {t('footer.copyright')} | <Link to="/impressum" className="impressum-link">{t('footer.imprint')}</Link> | <Link to="/datenschutz" className="impressum-link">{t('footer.privacy')}</Link></p>
         </div>
       </div>
     </footer>
