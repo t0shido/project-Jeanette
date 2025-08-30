@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container footer-container">
         <div>
           <a href="/" className="footer-logo">
-            Jeanette's Office<span>.</span>
+            <div className="logo-main">Jeanette's Office<span>.</span></div>
           </a>
           <p className="footer-description">
             {t('footer.description')}

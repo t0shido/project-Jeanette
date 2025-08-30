@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 import { useTranslation } from '../../translations';
@@ -106,8 +106,27 @@ const Header = () => {
 
   // Links for navigation
   const navLinks = [
+    { 
+      href: '#services', 
+      text: t('nav.services'), 
+      homePath: '/',
+      hasDropdown: true,
+      dropdownItems: [
+        { 
+          href: '/services/virtuelle-assistenz', 
+          text: t('nav.virtuelleAssistenz'),
+          englishHref: '/services/virtual-assistance',
+          englishText: t('nav.virtualAssistance')
+        },
+        { 
+          href: '/services/media-rights', 
+          text: t('nav.mediaRights'),
+          englishHref: '/services/publishing-media-rights',
+          englishText: t('nav.publishingMediaRights')
+        }
+      ]
+    },
     { href: '#about', text: t('nav.about'), homePath: '/' },
-    { href: '#services', text: t('nav.services'), homePath: '/' },
     { href: '#testimonials', text: t('nav.testimonials'), homePath: '/' },
     { href: '#contact', text: t('nav.contact'), homePath: '/' }
   ];
@@ -118,7 +137,6 @@ const Header = () => {
         {/* Logo */}
         <a href="/" className="logo">
           <div className="logo-main">Jeanette's Office<span>.</span></div>
-          <div className="logo-slogan">{t('logo.slogan')}</div>
         </a>
 
         {/* Navigation and Language Switcher Container */}
@@ -126,21 +144,54 @@ const Header = () => {
           {/* Regular Navigation */}
           <nav className="nav-regular">
             {navLinks.map((link, index) => (
-              isHomePage ? (
-                <a 
-                  key={index} 
-                  href={link.href} 
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                >
-                  {link.text}
-                </a>
+              link.hasDropdown ? (
+                <div className="nav-item" key={index}>
+                  {isHomePage ? (
+                    <a 
+                      className="nav-item-with-dropdown"
+                      href={link.href} 
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                    >
+                      {link.text}
+                      <span className="dropdown-arrow"></span>
+                    </a>
+                  ) : (
+                    <Link 
+                      className="nav-item-with-dropdown"
+                      to={link.homePath} 
+                    >
+                      {link.text}
+                      <span className="dropdown-arrow"></span>
+                    </Link>
+                  )}
+                  <div className="dropdown-menu">
+                    {link.dropdownItems.map((item, itemIndex) => (
+                      <Link 
+                        key={itemIndex} 
+                        to={item.href}
+                      >
+                        {item.text}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
               ) : (
-                <Link 
-                  key={index} 
-                  to={link.homePath} 
-                >
-                  {link.text}
-                </Link>
+                isHomePage ? (
+                  <a 
+                    key={index} 
+                    href={link.href} 
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                  >
+                    {link.text}
+                  </a>
+                ) : (
+                  <Link 
+                    key={index} 
+                    to={link.homePath} 
+                  >
+                    {link.text}
+                  </Link>
+                )
               )
             ))}
           </nav>
@@ -178,22 +229,33 @@ const Header = () => {
           </div>
           <div className="mobile-menu-content">
             {navLinks.map((link, index) => (
-              isHomePage ? (
-                <a 
-                  key={index} 
-                  href={link.href} 
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                >
-                  {link.text}
-                </a>
-              ) : (
-                <Link 
-                  key={index} 
-                  to={link.homePath} 
-                >
-                  {link.text}
-                </Link>
-              )
+              <React.Fragment key={index}>
+                {isHomePage ? (
+                  <a 
+                    href={link.href} 
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                  >
+                    {link.text}
+                  </a>
+                ) : (
+                  <Link 
+                    to={link.homePath} 
+                  >
+                    {link.text}
+                  </Link>
+                )}
+                
+                {/* Add dropdown items directly below their parent in mobile view */}
+                {link.hasDropdown && link.dropdownItems.map((item, itemIndex) => (
+                  <Link 
+                    key={`dropdown-${index}-${itemIndex}`}
+                    to={item.href}
+                    className="mobile-dropdown-item"
+                  >
+                    {item.text}
+                  </Link>
+                ))}
+              </React.Fragment>
             ))}
             
             {/* Language Switcher in Mobile Menu */}

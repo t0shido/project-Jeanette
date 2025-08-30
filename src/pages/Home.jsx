@@ -24,8 +24,8 @@ const Home = () => {
   return (
     <>
       {isGerman ? <HeroDE /> : <HeroEN />}
-      {isGerman ? <AboutDE /> : <AboutEN />}
       {isGerman ? <ServicesDE /> : <ServicesEN />}
+      {isGerman ? <AboutDE /> : <AboutEN />}
       {isGerman ? <TestimonialsDE /> : <TestimonialsEN />}
       {isGerman ? <ContactDE /> : <ContactEN />}
     </>

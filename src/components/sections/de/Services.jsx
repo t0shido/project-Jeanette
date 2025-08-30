@@ -1,177 +1,73 @@
-import { useState, useEffect, useRef } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { TextReveal, FadeIn } from '../../animations/ScrollAnimations';
+import backOfficeImage from '../../../assets/images/back_office.jpg';
+import mediaRightsImage from '../../../assets/images/media_rights.jpg';
 
 const Services = () => {
-  const [slidesToShow, setSlidesToShow] = useState(1); // Show only one card at a time
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const sliderRef = useRef(null);
+  const [hoveredFrame, setHoveredFrame] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setSlidesToShow(1);
-      } else if (window.innerWidth < 1024) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(3);
-      }
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const services = [
+  const frames = [
     {
-      title: "E-Mail-Management",
-      description: "Halten Sie Ihre E-Mails mit professioneller Filterung, Beantwortung und Organisation Ihres Posteingangs in Ordnung.",
+      id: "frame1",
+      title: "Virtuelle Assistenz & Back-Office",
+      description: "Professionelle Unterstützung für Ihren Geschäftsalltag mit E-Mail-Management, Kalender-Organisation, administrativen Aufgaben und Social Media Support. Konzentrieren Sie sich auf Ihr Kerngeschäft, während ich Ihnen den Rücken freihalte.",
+      path: "/services/virtuelle-assistenz",
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      )
-    },
-    {
-      title: "Kalender-Management",
-      description: "Effiziente Terminplanung, Vereinbarung von Terminen und Kalenderorganisation zur Optimierung Ihrer Zeit.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      )
-    },
-    {
-      title: "Recherche",
-      description: "Gründliche Recherche zu Themen, Wettbewerbern, Märkten oder jeglichen Informationen, die Sie für Ihr Unternehmen benötigen.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      )
-    },
-    {
-      title: "Dateneingabe",
-      description: "Präzise und effiziente Dateneingabe, Organisation und Verwaltung für Ihre geschäftlichen Anforderungen.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="frame-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
-      )
+      ),
+      image: backOfficeImage
     },
     {
-      title: "CRM-Verwaltung",
-      description: "Pflege und Aktualisierung Ihres Customer-Relationship-Management-Systems zur Verfolgung von Kunden und Interessenten.",
+      id: "frame2",
+      title: "Verlags- & Media-Rights-Management",
+      description: "Spezialisierte Assistenz für Verlage und Medienunternehmen. Von der Verwaltung von Medienrechten über Lizenzverhandlungen bis hin zur Unterstützung bei Vertragsangelegenheiten und Publikationsabläufen.",
+      path: "/services/media-rights",
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="frame-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
         </svg>
-      )
-    },
-    {
-      title: "Social Media Unterstützung",
-      description: "Content-Planung, einfache Grafikerstellung und Verwaltung Ihrer Social-Media-Präsenz.",
-      icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-        </svg>
-      )
+      ),
+      image: mediaRightsImage
     }
   ];
 
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: slidesToShow,
-    slidesToScroll: 1,
-    autoplay: true, // Enable autoplay for carousel behavior
-    autoplaySpeed: 4000, // Auto-advance every 4 seconds
-    pauseOnHover: true, // Pause when hovering
-    arrows: true, // Enable arrows for navigation
-    swipe: false, // Disable swiping on touch devices
-    draggable: false, // Disable dragging with mouse
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 1, // One card on tablets
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1, // One card on mobile
-          slidesToScroll: 1,
-          swipe: true, // Enable swipe on mobile
-          touchMove: true, // Enable touch movement
-          draggable: true, // Enable dragging on mobile
-          fade: true, // Smooth fade transition like testimonials
-          arrows: false // Hide arrows on mobile
-        }
-      }
-    ]
-  };
 
   return (
-    <section id="services" className="services-section py-16 bg-neutral-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="section-title">Meine Leistungen</h2>
-          <div className="section-divider mx-auto"></div>
-          <p className="services-subtitle">
-            Professionelle Unterstützung für Ihren Geschäftsalltag
-          </p>
+    <section id="services" className="services-section">
+      <div className="services-header-container">
+        <div className="mb-12">
+          <FadeIn y={30} duration={0.8}>
+            <TextReveal text="Meine Leistungen" element="h2" className="section-title text-left" />
+          </FadeIn>
+          <div className="section-divider"></div>
         </div>
-        
-        <div className="services-slider-container">
-          <button 
-            className="slider-nav-button prev" 
-            onClick={() => sliderRef.current.slickPrev()}
-            aria-label="Previous slide"
+      </div>
+      
+      <div className="services-split-container">
+        {frames.map((frame) => (
+          <div
+            key={frame.id}
+            className={`services-split-half ${hoveredFrame === frame.id ? 'hovered' : ''}`}
+            onMouseEnter={() => setHoveredFrame(frame.id)}
+            onMouseLeave={() => setHoveredFrame(null)}
+            onClick={() => navigate(frame.path)}
+            role="button"
+            tabIndex="0"
+            aria-label={`Mehr über ${frame.title} erfahren`}
+            onKeyDown={(e) => e.key === 'Enter' && navigate(frame.path)}
+            style={{ backgroundImage: `url(${frame.image})` }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          
-          <Slider ref={sliderRef} {...sliderSettings}>
-            {services.map((service, index) => (
-              <div key={index} className="service-slide">
-                <div 
-                  className={`service-card ${hoveredCard === index ? 'hovered' : ''}`}
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                >
-                  <div className="service-icon-container">
-                    {service.icon}
-                  </div>
-                  <h3 className="service-title">
-                    {service.title}
-                  </h3>
-                  <p className="service-description">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </Slider>
-          
-          <button 
-            className="slider-nav-button next" 
-            onClick={() => sliderRef.current.slickNext()}
-            aria-label="Next slide"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-        
-        {/* Services CTA removed as requested */}
+            <div className="services-split-overlay"></div>
+            <div className="services-split-content">
+              <h3 className="services-split-title">{frame.title}</h3>
+              <div className="services-split-link">Mehr erfahren →</div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

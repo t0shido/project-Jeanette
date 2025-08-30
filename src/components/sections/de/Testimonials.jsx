@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { TextReveal, FadeIn } from '../../animations/ScrollAnimations';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -70,9 +71,9 @@ const Testimonials = () => {
     <section id="testimonials">
       <div className="container">
         <div className="testimonials-header">
-          <h2 className="section-title testimonials-title">
-            Kunden<span className="highlight">referenzen</span>
-          </h2>
+          <FadeIn y={30} duration={0.8}>
+            <TextReveal text="Kundenreferenzen" element="h2" className="section-title text-left" />
+          </FadeIn>
           {/* Testimonials subtitle removed as requested */}
         </div>
 

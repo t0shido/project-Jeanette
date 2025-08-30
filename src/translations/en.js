@@ -12,7 +12,10 @@ export const en = {
     testimonials: "Testimonials",
     contact: "Contact",
     privacy: "Privacy Policy",
-    imprint: "Legal Notice"
+    imprint: "Legal Notice",
+    // Service detail pages
+    virtualAssistance: "Virtual Assistance",
+    publishingMediaRights: "Publishing Media Rights"
   },
 
   // Hero Section

@@ -12,7 +12,10 @@ export const de = {
     testimonials: "Referenzen",
     contact: "Kontakt",
     privacy: "Datenschutz",
-    imprint: "Impressum"
+    imprint: "Impressum",
+    // Service detail pages
+    virtuelleAssistenz: "Virtuelle Assistenz",
+    mediaRights: "Media Rights"
   },
 
   // Hero Section

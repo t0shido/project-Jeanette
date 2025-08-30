@@ -1,4 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { TextReveal, FadeIn } from '../../animations/ScrollAnimations';
+import { validateForm } from '../../../utils/formValidation';
+import { motion } from 'framer-motion';
 
 const ContactEN = () => {
   const formRef = useRef(null);
@@ -12,6 +15,8 @@ const ContactEN = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [formFocus, setFormFocus] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({});
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,18 +24,79 @@ const ContactEN = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
   };
   
   const handleFocus = (field) => {
     setFormFocus(field);
   };
   
-  const handleBlur = () => {
+  const handleBlur = (e) => {
+    const { name } = e.target;
     setFormFocus(null);
+    
+    // Mark field as touched
+    setTouched(prev => ({
+      ...prev,
+      [name]: true
+    }));
+    
+    // Validate field on blur
+    validateField(name, formData[name]);
+  };
+  
+  // Validate a single field
+  const validateField = (name, value) => {
+    const { errors: fieldErrors } = validateForm({
+      ...formData,
+      [name]: value
+    });
+    
+    if (fieldErrors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: fieldErrors[name]
+      }));
+      return false;
+    } else {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+      return true;
+    }
   };
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Mark all fields as touched
+    const allTouched = {};
+    Object.keys(formData).forEach(key => {
+      allTouched[key] = true;
+    });
+    setTouched(allTouched);
+    
+    // Validate all fields
+    const { isValid, errors: validationErrors } = validateForm(formData);
+    setErrors(validationErrors);
+    
+    if (!isValid) {
+      // Scroll to first error
+      const firstErrorField = document.querySelector('.form-group.has-error');
+      if (firstErrorField) {
+        firstErrorField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    
     setIsSubmitting(true);
     
     // Simulate form submission
@@ -43,6 +109,8 @@ const ContactEN = () => {
         message: '',
         service: ''
       });
+      setTouched({});
+      setErrors({});
       
       // Reset status after 5 seconds
       setTimeout(() => {
@@ -64,9 +132,9 @@ const ContactEN = () => {
       <div className="container">
         <div className="contact-content">
           <div className="contact-header">
-            <h2 className="section-title">
-              Let's <span className="highlight">get in touch</span>
-            </h2>
+            <FadeIn y={30} duration={0.8}>
+              <TextReveal text="Let's get in touch" element="h2" className="section-title text-left" />
+            </FadeIn>
             <p className="contact-subtitle">
               If you need assistance, please fill out the form below. I will get back to you within 24 hours.
             </p>
@@ -146,7 +214,7 @@ const ContactEN = () => {
             <div className="contact-form-container">
               <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
                 <div className="form-grid">
-                  <div className={`form-group ${formFocus === 'name' ? 'focused' : ''}`}>
+                  <div className={`form-group ${formFocus === 'name' ? 'focused' : ''} ${errors.name && touched.name ? 'has-error' : ''}`}>
                     <label htmlFor="name">Your Name</label>
                     <input
                       type="text"
@@ -157,11 +225,24 @@ const ContactEN = () => {
                       onFocus={() => handleFocus('name')}
                       onBlur={handleBlur}
                       placeholder="John Doe"
+                      aria-invalid={errors.name && touched.name ? 'true' : 'false'}
+                      aria-describedby={errors.name ? 'name-error' : undefined}
                       required
                     />
+                    {errors.name && touched.name && (
+                      <motion.div 
+                        className="error-message" 
+                        id="name-error"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {errors.name}
+                      </motion.div>
+                    )}
                   </div>
                   
-                  <div className={`form-group ${formFocus === 'email' ? 'focused' : ''}`}>
+                  <div className={`form-group ${formFocus === 'email' ? 'focused' : ''} ${errors.email && touched.email ? 'has-error' : ''}`}>
                     <label htmlFor="email">Email Address</label>
                     <input
                       type="email"
@@ -172,12 +253,25 @@ const ContactEN = () => {
                       onFocus={() => handleFocus('email')}
                       onBlur={handleBlur}
                       placeholder="john@example.com"
+                      aria-invalid={errors.email && touched.email ? 'true' : 'false'}
+                      aria-describedby={errors.email ? 'email-error' : undefined}
                       required
                     />
+                    {errors.email && touched.email && (
+                      <motion.div 
+                        className="error-message" 
+                        id="email-error"
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {errors.email}
+                      </motion.div>
+                    )}
                   </div>
                 </div>
                 
-                <div className={`form-group ${formFocus === 'service' ? 'focused' : ''}`}>
+                <div className={`form-group ${formFocus === 'service' ? 'focused' : ''} ${errors.service && touched.service ? 'has-error' : ''}`}>
                   <label htmlFor="service">Service You're Interested In</label>
                   <select
                     id="service"
@@ -186,6 +280,8 @@ const ContactEN = () => {
                     onChange={handleChange}
                     onFocus={() => handleFocus('service')}
                     onBlur={handleBlur}
+                    aria-invalid={errors.service && touched.service ? 'true' : 'false'}
+                    aria-describedby={errors.service ? 'service-error' : undefined}
                     required
                   >
                     <option value="">Select a service</option>
@@ -197,9 +293,20 @@ const ContactEN = () => {
                     <option value="social-media">Social Media Support</option>
                     <option value="other">Other (Please specify)</option>
                   </select>
+                  {errors.service && touched.service && (
+                    <motion.div 
+                      className="error-message" 
+                      id="service-error"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {errors.service}
+                    </motion.div>
+                  )}
                 </div>
                 
-                <div className={`form-group ${formFocus === 'message' ? 'focused' : ''}`}>
+                <div className={`form-group ${formFocus === 'message' ? 'focused' : ''} ${errors.message && touched.message ? 'has-error' : ''}`}>
                   <label htmlFor="message">Your Message</label>
                   <textarea
                     id="message"
@@ -210,8 +317,21 @@ const ContactEN = () => {
                     onBlur={handleBlur}
                     rows="5"
                     placeholder="Tell me about your needs and how I can help you..."
+                    aria-invalid={errors.message && touched.message ? 'true' : 'false'}
+                    aria-describedby={errors.message ? 'message-error' : undefined}
                     required
                   ></textarea>
+                  {errors.message && touched.message && (
+                    <motion.div 
+                      className="error-message" 
+                      id="message-error"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {errors.message}
+                    </motion.div>
+                  )}
                 </div>
                 
                 <button

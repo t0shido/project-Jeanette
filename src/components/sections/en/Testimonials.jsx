@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { TextReveal, FadeIn } from '../../animations/ScrollAnimations';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -10,31 +11,31 @@ const Testimonials = () => {
   const testimonials = [
     {
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-      name: "Anna Miller",
+      name: "Toshi Edelmann",
       title: "CEO",
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit.",
-      name: "Thomas Smith",
+      name: "Toshi Edelmann",
       title: "Project Manager",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.",
-      name: "Lisa Wilson",
+      name: "Toshi Edelmann",
       title: "Marketing Manager",
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores.",
-      name: "Mark Fisher",
+      name: "Toshi Edelmann",
       title: "IT Consultant",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     },
     {
       quote: "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.",
-      name: "Julia Baker",
+      name: "Toshi Edelmann",
       title: "Consultant",
       image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
     }
@@ -70,9 +71,9 @@ const Testimonials = () => {
     <section id="testimonials">
       <div className="container">
         <div className="testimonials-header">
-          <h2 className="section-title testimonials-title">
-            Client <span className="highlight">References</span>
-          </h2>
+          <FadeIn y={30} duration={0.8}>
+            <TextReveal text="Client References" element="h2" className="section-title text-left" />
+          </FadeIn>
           {/* Testimonials subtitle removed as requested */}
         </div>
 
