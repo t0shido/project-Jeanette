@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import backOfficeImage from '../../assets/images/back_office.jpg';
 
 const VirtualAssistancePage = () => {
   return (
@@ -7,14 +8,12 @@ const VirtualAssistancePage = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="service-detail-header text-center mb-12">
           <h1 className="text-4xl font-bold mb-6 font-playfair text-gray-800">Virtual Assistance & Back-Office</h1>
-          <div className="frame-icon-container mx-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" className="frame-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
         </div>
 
         <div className="service-detail-content max-w-4xl mx-auto">
+          <div className="service-detail-image-container mb-12">
+            <img src={backOfficeImage} alt="Virtual Assistance & Back-Office" className="service-detail-image" />
+          </div>
           <section className="mb-12">
             <h2 className="text-2xl font-semibold mb-4 font-playfair text-gray-800">Professional Support for Your Daily Business Operations</h2>
             <p className="text-lg mb-6">
