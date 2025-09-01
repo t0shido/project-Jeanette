@@ -2016,6 +2016,7 @@ header.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px; /* Added padding around the arrow icon */
   cursor: pointer;
   z-index: 20;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -2030,11 +2031,11 @@ header.scrolled {
 }
 
 .testimonial-slider-wrapper .slider-nav-button.prev {
-  left: -45px;
+  left: -60px; /* Adjust this value to move the previous button */
 }
 
 .testimonial-slider-wrapper .slider-nav-button.next {
-  right: -45px;
+  right: -60px; /* Adjust this value to move the next button */
 }
 
 .testimonial-slider-wrapper .slider-nav-button svg {
