@@ -133,11 +133,9 @@ const ContactDE = () => {
         <div className="contact-content">
           <div className="contact-header">
             <FadeIn y={30} duration={0.8}>
-              <TextReveal text="Lassen Sie uns in Kontakt treten" element="h2" className="section-title text-left" />
+              <TextReveal text="Kontakt" element="h2" className="section-title text-left" />
             </FadeIn>
-            <p className="contact-subtitle">
-              Wenn Sie Unterstützung wünschen, füllen Sie bitte das untenstehende Formular aus. Ich melde mich innerhalb von 24 Stunden bei Ihnen.
-            </p>
+            {/* Assistance text removed */}
           </div>
           
           <div className="contact-grid">
