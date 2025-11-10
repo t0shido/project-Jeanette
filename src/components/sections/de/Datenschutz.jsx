@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../../legal/LegalPages.css';
 
 const Datenschutz = () => {
   // Scroll to top when component mounts
@@ -7,14 +8,15 @@ const Datenschutz = () => {
   }, []);
   
   return (
-    <section id="datenschutz" className="impressum-section" style={{ paddingTop: 'clamp(80px, 10vh, 120px)', marginTop: 'clamp(40px, 5vh, 60px)' }}>
-      <div className="container">
-        <h2 className="section-title text-center">
-          <span className="highlight">Datenschutzerklärung</span>
-        </h2>
+    <section id="datenschutz" className="legal-page-section">
+      <div className="legal-page-container">
+        <div className="legal-page-header">
+          <h1 className="legal-page-title">Datenschutzerklärung</h1>
+          <p className="legal-page-subtitle">Informationen zur Datenverarbeitung</p>
+        </div>
         
-        <div className="impressum-content">
-          <div className="impressum-block">
+        <div className="legal-page-content">
+          <div className="legal-block">
             <h3>1. Datenschutz auf einen Blick</h3>
             <h4>Allgemeine Hinweise</h4>
             <p>
@@ -47,7 +49,7 @@ const Datenschutz = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>2. Hosting</h3>
             <p>
               Wir hosten die Inhalte unserer Website bei folgendem Anbieter:
@@ -63,7 +65,7 @@ const Datenschutz = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>3. Allgemeine Hinweise und Pflichtinformationen</h3>
             <h4>Datenschutz</h4>
             <p>
@@ -100,7 +102,7 @@ const Datenschutz = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>4. Datenerfassung auf dieser Website</h3>
             <h4>Cookies</h4>
             <p>
@@ -124,7 +126,7 @@ const Datenschutz = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>5. Kontaktformular</h3>
             <p>
               Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.

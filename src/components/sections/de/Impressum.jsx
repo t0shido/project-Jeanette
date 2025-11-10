@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import '../../legal/LegalPages.css';
 
 const Impressum = () => {
   // Scroll to top when component mounts
@@ -8,14 +9,15 @@ const Impressum = () => {
   }, []);
   
   return (
-    <section id="impressum" className="impressum-section" style={{ paddingTop: 'clamp(80px, 10vh, 120px)', marginTop: 'clamp(40px, 5vh, 60px)' }}>
-      <div className="container">
-        <h2 className="section-title text-center">
-          <span className="highlight">Impressum</span>
-        </h2>
+    <section id="impressum" className="legal-page-section">
+      <div className="legal-page-container">
+        <div className="legal-page-header">
+          <h1 className="legal-page-title">Impressum</h1>
+          <p className="legal-page-subtitle">Angaben gemäß § 5 TMG</p>
+        </div>
         
-        <div className="impressum-content">
-          <div className="impressum-block">
+        <div className="legal-page-content">
+          <div className="legal-block">
             <h3>Angaben gemäß § 5 TMG</h3>
             <p>
               Jeanette's Office<br />
@@ -25,7 +27,7 @@ const Impressum = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Kontakt</h3>
             <p>
               Telefon: +49 123 456789<br />
@@ -33,7 +35,7 @@ const Impressum = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Umsatzsteuer-ID</h3>
             <p>
               Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
@@ -41,7 +43,7 @@ const Impressum = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
             <p>
               Jeanette Mustermann<br />
@@ -51,7 +53,7 @@ const Impressum = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Haftungsausschluss</h3>
             <h4>Haftung für Inhalte</h4>
             <p>

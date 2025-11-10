@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import '../../legal/LegalPages.css';
 
 const PrivacyPolicy = () => {
   // Scroll to top when component mounts
@@ -7,14 +8,15 @@ const PrivacyPolicy = () => {
   }, []);
   
   return (
-    <section id="privacy" className="impressum-section" style={{ paddingTop: 'clamp(80px, 10vh, 120px)', marginTop: 'clamp(40px, 5vh, 60px)' }}>
-      <div className="container">
-        <h2 className="section-title text-center">
-          <span className="highlight">Privacy Policy</span>
-        </h2>
+    <section id="privacy" className="legal-page-section">
+      <div className="legal-page-container">
+        <div className="legal-page-header">
+          <h1 className="legal-page-title">Privacy Policy</h1>
+          <p className="legal-page-subtitle">Information on Data Processing</p>
+        </div>
         
-        <div className="impressum-content">
-          <div className="impressum-block">
+        <div className="legal-page-content">
+          <div className="legal-block">
             <h3>1. Privacy at a Glance</h3>
             <h4>General Information</h4>
             <p>
@@ -47,7 +49,7 @@ const PrivacyPolicy = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>2. Hosting</h3>
             <p>
               We host the content of our website with the following provider:
@@ -63,7 +65,7 @@ const PrivacyPolicy = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>3. General Information and Mandatory Information</h3>
             <h4>Data Protection</h4>
             <p>
@@ -100,7 +102,7 @@ const PrivacyPolicy = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>4. Data Collection on this Website</h3>
             <h4>Cookies</h4>
             <p>
@@ -124,7 +126,7 @@ const PrivacyPolicy = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>5. Contact Form</h3>
             <p>
               If you send us inquiries via the contact form, your details from the inquiry form, including the contact data you provided there, will be stored by us for the purpose of processing the inquiry and in case of follow-up questions. We do not pass on this data without your consent.

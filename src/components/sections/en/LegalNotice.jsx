@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import '../../legal/LegalPages.css';
 
 const LegalNotice = () => {
   // Scroll to top when component mounts
@@ -8,14 +9,15 @@ const LegalNotice = () => {
   }, []);
   
   return (
-    <section id="legal-notice" className="impressum-section" style={{ paddingTop: 'clamp(80px, 10vh, 120px)', marginTop: 'clamp(40px, 5vh, 60px)' }}>
-      <div className="container">
-        <h2 className="section-title text-center">
-          <span className="highlight">Legal Notice</span>
-        </h2>
+    <section id="legal-notice" className="legal-page-section">
+      <div className="legal-page-container">
+        <div className="legal-page-header">
+          <h1 className="legal-page-title">Legal Notice</h1>
+          <p className="legal-page-subtitle">Information according to § 5 TMG</p>
+        </div>
         
-        <div className="impressum-content">
-          <div className="impressum-block">
+        <div className="legal-page-content">
+          <div className="legal-block">
             <h3>Information according to § 5 TMG</h3>
             <p>
               Jeanette's Office<br />
@@ -25,7 +27,7 @@ const LegalNotice = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Contact</h3>
             <p>
               Phone: +49 123 456789<br />
@@ -33,7 +35,7 @@ const LegalNotice = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>VAT ID</h3>
             <p>
               VAT identification number according to § 27 a VAT Tax Act:<br />
@@ -41,7 +43,7 @@ const LegalNotice = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Responsible for Content according to § 55 Para. 2 RStV</h3>
             <p>
               Jeanette Sample<br />
@@ -51,7 +53,7 @@ const LegalNotice = () => {
             </p>
           </div>
           
-          <div className="impressum-block">
+          <div className="legal-block">
             <h3>Disclaimer</h3>
             <h4>Liability for Content</h4>
             <p>
