@@ -1,0 +1,207 @@
+/* Scroll Animation Styles */
+
+/* Fade In Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Text Reveal Animation */
+.text-reveal-container {
+  overflow: hidden;
+}
+
+.text-reveal-word {
+  display: inline-block;
+  margin-right: 0.25em;
+  white-space: nowrap;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: #ec4899;
+  transform-origin: 0%;
+  z-index: 2000;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Parallax Section */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax-content {
+  will-change: transform;
+}
+
+/* Sticky Scroll Section */
+.sticky-scroll-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.sticky-content {
+  position: sticky;
+  top: 50vh;
+  z-index: 10;
+}
+
+/* Stagger Container */
+.stagger-container > * {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.stagger-container.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation Utilities */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* Fix for hero section parallax */
+#hero, .hero-section {
+  perspective: 1000px;
+}
+
+#hero .hero-background {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#hero .hero-content {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#hero .circle-frame-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hero slogan main styling */
+.hero-slogan-main {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-slogan-main p {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(2rem, 5vw + 1rem, 5rem); /* Fluid typography */
+  line-height: 1;
+  font-weight: 700;
+  color: #363030;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 2px 4px rgba(90, 79, 68, 0.4);
+  background: transparent;
+  border: none;
+  display: inline-block;
+  letter-spacing: -0.01em;
+  will-change: transform;
+}
+
+/* Profile image positioning */
+.circle-frame-container {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+}
+
+.circle-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 5px solid rgba(255, 255, 255, 0.8);
+}
+
+.circle-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slogan-main p,
+  .circle-frame-container,
+  .hero-background,
+  .hero-content {
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+  }
+  
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .circle-frame-container {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    margin: 2rem auto;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  .circle-frame-container {
+    width: 250px;
+    height: 250px;
+    right: 5%;
+  }
+}
+
+/* Fix for about section sticky scroll */
+#about {
+  perspective: 1000px;
+}
+
+#about .about-content-wrapper {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+#about .about-image-container {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
