@@ -659,8 +659,8 @@ header.scrolled {
 }
 
 .circle-frame {
-  width: 320px;           /* consistent size across all screen sizes */
-  height: 320px;
+  width: 280px;           /* default mobile size */
+  height: 280px;
   border-radius: 50%;     /* makes it a circle */
   overflow: hidden;       /* hides parts outside the circle */
   position: relative;
@@ -679,8 +679,27 @@ header.scrolled {
   object-position: center; /* Center the image */
 }
 
-/* Adjust profile image positioning for larger screens */
+/* Adjust profile image and circle frame for larger screens */
+@media (min-width: 481px) and (max-width: 767px) {
+  .circle-frame {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
+
 @media (min-width: 768px) {
+  .circle-frame {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .circle-frame-container {
+    position: absolute !important;
+    top: 33% !important;
+    left: 10% !important;
+    transform: none !important;
+  }
+  
   .profile-image {
     width: 100%; /* Match base style */
     left: 0; /* Match base style */
@@ -696,22 +715,32 @@ header.scrolled {
   }
 }
 
-/* Responsive styles for hero section */
-/* Small phones (up to 480px) */
+/* Responsive styles for hero section - Cache bust v2 */
+/* Small phones (up to 480px) including iPhone SE (375px) */
 @media (max-width: 480px) {
+  .hero-section .circle-frame-container .circle-frame {
+    width: 280px !important;
+    height: 280px !important;
+  }
+  
+  .circle-frame {
+    width: 280px !important;
+    height: 280px !important;
+  }
+  
   #hero, .hero-section {
     padding-top: 0 !important;
     margin-top: 0 !important;
-    height: 100vh;
-    min-height: 600px;
+    height: auto;
+    min-height: 100vh;
     position: relative;
     margin-bottom: -1px;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    padding-top: 15% !important; /* Add padding at top to push everything down */
-    padding-bottom: 5% !important; /* Add padding at bottom */
+    padding-top: 8rem !important;
+    padding-bottom: 3rem !important;
   }
   
   /* Hide slogan text on mobile */
@@ -724,14 +753,14 @@ header.scrolled {
   }
   
   .hero-text {
-    padding: 0 1.5rem;
+    padding: 0 1.5rem !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-    text-align: center;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    text-align: center !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
   
   .hero-slogan-main {
@@ -754,14 +783,14 @@ header.scrolled {
   }
   
   .hero-content {
-    order: 2;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: static;
-    transform: none;
-    margin-top: 0;
+    order: 2 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: static !important;
+    transform: none !important;
+    margin-top: 0 !important;
   }
   
   .circle-frame-container {
@@ -769,11 +798,12 @@ header.scrolled {
     left: auto !important;
     top: auto !important;
     transform: none !important;
-    order: 1;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0rem auto 2rem auto;
+    order: 1 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0rem auto calc(2rem + 20vw) auto !important;
+    flex-shrink: 0 !important;
   }
   
   .circle-frame {

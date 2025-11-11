@@ -1,4 +1,4 @@
-import { useRef, memo } from 'react';
+import { useRef, memo, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ParallaxSection } from '../../animations/ScrollAnimations';
 import heroBackgroundWebp from '../../../assets/images/hero_background.webp';
@@ -6,6 +6,15 @@ import heroImage from '../../../assets/images/hero_image.webp';
 
 const Hero = memo(() => {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -73,13 +82,6 @@ const Hero = memo(() => {
         
         <motion.div 
           className="circle-frame-container"
-          style={{ 
-            scale: imageScale,
-            position: 'absolute',
-            top: '33%',
-            left: '10%',
-            transform: 'none'
-          }}
         >
           <div 
             className="circle-frame"
